@@ -1,0 +1,110 @@
+@import './base.less';
+* {
+    padding: 0;
+    margin: 0;
+}
+ul{
+    list-style: none;
+}
+#header{
+    .search-center{
+        font-weight: 400;
+    }
+    .fa-home{
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: #fff;
+    }
+}
+
+#main{
+    padding-top: 45px;
+    padding-bottom: 45px;
+    .introduce{ 
+        .title{
+            padding: 0px 5px;
+            font-size: 18px;
+            height: 55px;
+            border-bottom: 1px solid #ccc;
+            
+        }
+        .price{
+            padding: 10px 5px;
+            font-size: 14px;
+            border-bottom: 1px solid #ccc;
+            .new-price{
+                color: orange;
+                font-size: 24px;
+                margin-left: 5px;
+            }
+            .old-price{
+                color: #afafaf;
+                margin-left: 10px;
+            }
+        }
+        .size{
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+            .btn-size{
+               line-height: 28px;
+                width: 28px;
+                height: 28px;
+                display: inline-block;
+                border: 1px solid #ccc;
+                text-align: center;
+                margin-bottom: 10px;
+                &:first-child{
+                    margin-left: 10px;
+                }
+                &.active{
+                    background-color: orange;
+                }
+            }
+        }
+        .dateil-num{
+            padding:8px 5px;
+            font-size: 14px;
+            border-bottom: 1px solid #ccc;
+            .coln{
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .mui-numbox{
+                margin-left: 5px;
+            }
+            .surplus{
+                margin-left: 5px;
+            }
+        }
+
+    }
+}
+
+#footer{
+    background-color: #ccc;
+
+    .fa-shopping-cart{
+        position: absolute;
+        left: -16px;
+        top: 8px;
+        color: #666;
+        font-size: 20px;
+    }
+    .btn-cartBuy{
+        padding-left: 60px;
+        width: 100%;
+        .btn-cart{
+            width: 48%;
+            margin-right: 5px;
+            float: left;
+            height: 36px;                                  
+        }
+        .btn-buy{
+            width: 48%;
+            float: right;  
+            margin-right: 5px;
+            height: 36px;                      
+        }
+    }
+}

@@ -1,0 +1,88 @@
+@import './base.less';
+
+#main{
+    padding-top: 45px;
+    padding-bottom: 95px;
+    .mui-media{
+        padding-right: 15px;
+        padding-bottom: 0px;
+        .mui-navigate-right::after,.mui-navigate-right::before{
+            right: -10px;
+        }
+        
+        .left{
+            padding: 10px;
+            padding-left: 0px;
+            min-width: 80px;
+            img{
+                min-width: 60px;
+                height: 60px;
+            }
+            .checkbox{
+                margin-top: 5px;
+            }
+        }
+        .product-name{
+            // 控制文字对于2行隐藏
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            font-size: 14px;
+            white-space: normal;
+        }
+        .product-price{
+            .newPrice{
+                font-size: 18px;
+                color: orange;
+            }
+            .oldPrice{
+                font-size: 12px;
+                color: #888;
+            }
+
+        }
+        .product-params{
+            padding-top: 5px;
+            .product-size,.product-num{
+                font-size: 12px;
+                color: #888;
+            }
+        }
+    }
+}
+
+.total{
+    position: fixed;
+    bottom: 45px;
+    left: 0px;
+    width: 100%;
+    font-size: 14px;
+    border-top: 1px solid #ccc;
+    padding: 2px 0px;
+    z-index: 888;
+    background-color: #eee;
+    .mui-pull-left{
+        margin-top: 5px;
+        padding-left: 15px;
+        color: red;
+        font-weight: 600;
+    }
+}
+
+.btn-size{
+    line-height: 28px;
+     width: 28px;
+     height: 28px;
+     display: inline-block;
+     border: 1px solid #ccc;
+     text-align: center;
+     margin-bottom: 10px;
+     &:first-child{
+         margin-left: 10px;
+     }
+     &.active{
+         background-color: orange;
+     }
+ }

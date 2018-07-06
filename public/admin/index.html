@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>我的乐淘后台管理登录</title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet/less" href="./less/index.less">
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <script src="./lib/less/less.js"></script>
+</head>
+
+<body>
+    <div class="row" id="main">
+        <div class="col-xs-2 main-left">
+            <div class="left">
+                <div class="left-top">
+                    <div class="left-img">
+                        <img src="./images/my_logo.jpg" alt="">
+                    </div>
+                    <p>张学友</p>
+                </div>
+                <div class="menu">
+                    <ul class="list-group">
+                        <li class="list-group-item ">
+                            <a href="#">用户管理</a>
+                        </li>
+                        <li class="list-group-item ">
+                            <a  data-toggle="collapse" data-parent="#accordion" 
+                            href="#collapseOne" aria-expanded="true" 
+                            aria-controls="collapseOne">分类管理 </a>
+                            <ul class="list-group categroy-list" id="collapseOne" 
+                            class="panel-collapse collapse in">
+                                <li class="list-group-item ">
+                                    <a href="./categoryFirst.html">一级分类</a>
+                                </li>
+                                <li class="list-group-item ">
+                                    <a href="./categorySecond.html">二级分类</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item ">
+                            <a href="#">商品管理</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-10 right">
+            <div class="right-top">
+                <div class="top-left">
+                    <span class="fa fa-navicon mui-pull-left"></span>
+                </div>
+                <div class="top-right">
+                    <span class="fa fa-sign-out mui-pull-right">退出</span>
+                </div>
+            </div>
+            <div class="right-main">
+                <div class="right-content">
+                    <table class="table table-bordered table-hover user-table">
+                        <thead>
+                            <tr class="thead-tr">
+                                <th></th>
+                                <th>用户名</th>
+                                <th>电话</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="user-tbody">
+                            <tr>
+                                <th scope="row">
+                                    <input type="checkbox">
+                                </th>
+                                <td>itcast</td>
+                                <td>15102324243</td>
+                                <td>已启用</td>
+                                <td>
+                                    <button class="mui-btn mui-btn-danger">禁用</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <input type="checkbox">
+                                </th>
+                                <td>itcast</td>
+                                <td>15102324243</td>
+                                <td>已启用</td>
+                                <td>
+                                    <button class="mui-btn mui-btn-danger">禁用</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- 分页的容器 -->
+                    <div class="paging">
+                        <!-- <div class="pull-left">
+                             显示第 1 到第 3 条记录，总共 3 条记录
+                        </div> -->
+                        <!-- <nav class="pull-right">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#">
+                                        <span>&laquo;</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">2</a>
+                                </li>
+                                <li>
+                                    <a href="#">3</a>
+                                </li>
+                                <li>
+                                    <a href="#">4</a>
+                                </li>
+                                <li>
+                                    <a href="#">5</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./lib/jquery/jquery.min.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./lib/mui/js/mui.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./lib/artTemplate/template.js"></script>
+    <!-- 生成表格模板 -->
+    <script type="text/html" id="userTmp">
+        {{each rows as value i}}
+            <tr>
+                <th scope="row">
+                    <input type="checkbox">
+                </th>
+                <td>{{value.username}}</td>
+                <td>{{value.mobile}}</td>
+                <td>{{value.isDelete ==1?'已启用':'已禁用'}}</td>
+                <td  data-id="{{value.id}}" data-isdelete="{{value.isDelete}}">
+                    <!-- 在模板写上html结构 需要再value值前面加#号 不然解析不了 -->
+                    {{#value.isDelete ==1?'<button class="mui-btn mui-btn-danger">禁用</button>':'<button class="mui-btn mui-btn-success">启用</button>'}}
+                    
+                </td>
+            </tr>
+        {{/each}}
+    </script>
+    <!-- 生成分页的模板 -->
+    <script type="text/html" id="pagingTmp">
+        <div class="pull-left">
+                显示第 {{page}}页的第 {{pageTotal}} 条记录，总共{{total}}条记录
+           </div>
+           <nav class="pull-right">
+               <ul class="pagination">
+                   <li>
+                       <a href="#" data-page="{{page>1?--page:1}}">
+                           <span class="preview">&laquo;</span>
+                       </a>
+                   </li>
+                   {{each pageCount as value i}}
+                        <li>
+                            <a class="page" href="#" data-page="{{value}}">{{value}}</a>
+                        </li>
+                   {{/each}}
+                   <li>
+                       <a href="#" data-page="{{page >=pageCount.length?pageCount.length:++page }}">
+                           <span class="next">&raquo;</span>
+                       </a>
+                   </li>
+               </ul>
+           </nav>
+    </script>
+</body>
+
+</html>
